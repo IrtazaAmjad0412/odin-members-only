@@ -1,8 +1,8 @@
 import express from "express";
-import { renderHomePage } from "../controllers/homePageController.js";
+import { getAllPostsAndRenderHomePage } from "../controllers/homePageController.js";
 
 const router = express.Router();
 
-router.get("/", renderHomePage);
+router.get("/", getAllPostsAndRenderHomePage);
 
 export default router;
