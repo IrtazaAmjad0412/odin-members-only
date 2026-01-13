@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: hsl(220, 50%, 10%);
+  --color-secondary: hsl(220, 50%, 90%);
+  --color-tertiary: hsl(280, 80%, 80%);
+  --color-accent: hsl(160, 80%, 80%);
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+}
+
+a {
+  color: var(--color-tertiary);
+}
+
+a:hover {
+  color: var(--color-accent);
+}
