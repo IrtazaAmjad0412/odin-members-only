@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
+import homePageRouter from "./routes/homePage.js";
 
 dotenv.config();
 
@@ -14,6 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.set("views", path.join(__dirname, "./views"));
 app.set("view engine", "ejs");
+
+app.use("/", homePageRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, (err) => {
