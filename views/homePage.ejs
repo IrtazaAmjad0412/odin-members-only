@@ -11,6 +11,10 @@
       <h1 class="site-title"><%= title %></h1>
       <%- include("navbar.ejs") %>
     </header>
+    <div class="actions">
+      <a href="/posts" class="btn">View Posts</a>
+      <a href="/posts/new" class="btn">New Post</a>
+    </div>
     <div class="post-list">
       <% posts.forEach((post)=> { %>
       <div class="post-card"></div>

@@ -17,10 +17,49 @@ body {
   color: var(--color-secondary);
 }
 
-a {
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 5rem;
+}
+
+.navbar a {
+  margin-right: 0.15rem;
+  text-decoration: none;
   color: var(--color-tertiary);
 }
 
-a:hover {
+.navbar a:not(:last-child)::after {
+  margin-left: 0.3rem;
+  content: "|";
+  color: var(--color-tertiary);
+}
+
+.navbar a:hover {
+  text-decoration: underline;
   color: var(--color-accent);
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 5rem;
+}
+
+.btn {
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  text-decoration: none;
+  background-color: var(--color-tertiary);
+  color: var(--color-primary);
+}
+
+.btn:hover {
+  background-color: var(--color-accent);
+}
+
+.navbar a,
+.btn {
+  transition: color 0.2s, background-color 0.2s;
 }
