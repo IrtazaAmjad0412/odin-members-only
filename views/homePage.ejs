@@ -3,18 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
+    <title><%= appTitle %></title>
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
-    <header class="header">
-      <h1 class="site-title"><%= title %></h1>
-      <%- include("navbar.ejs") %>
-    </header>
-    <div class="actions">
-      <a href="/posts" class="btn">View Posts</a>
-      <a href="/posts/new" class="btn">New Post</a>
-    </div>
+    <%- include("header.ejs") %>
+    <section class="page-header">
+      <h2 class="page-title"><%= pageTitle %></h2>
+      <div class="actions">
+        <a href="/posts/new" class="btn">New Post</a>
+      </div>
+    </section>
     <div class="post-list">
       <% posts.forEach((post)=> { %>
       <div class="post-card"></div>
