@@ -5,7 +5,6 @@ export const getAllPostsAndRenderHomePage = async (req, res) => {
     const posts = await getAllPosts();
     res.render("homePage", {
       appTitle: "Odin Clubhouse",
-      pageTitle: "All Posts",
       posts: posts,
     });
   } catch (err) {
