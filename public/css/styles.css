@@ -94,6 +94,7 @@ body {
   color: var(--color-error);
 }
 
+.welcome-message,
 .page-title {
   font-size: 1.75rem;
 }

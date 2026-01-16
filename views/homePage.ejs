@@ -11,12 +11,12 @@
     <section class="page-header">
       <% if (user) { %>
       <h2 class="welcome-message">Welcome, <%= user.first_name %></h2>
-      <% } else { %>
-      <h2 class="welcome-message">Welcome, Guest</h2>
-      <% } %>
       <div class="actions">
         <a href="/posts/new" class="btn">New Post</a>
       </div>
+      <% } else { %>
+      <h2 class="welcome-message">Welcome, Guest</h2>
+      <% } %>
     </section>
     <div class="post-list">
       <% posts.forEach((post)=> { %>

@@ -24,9 +24,10 @@
           name="username"
           id="username"
           value="<%= oldInput ? oldInput.username: '' %>"
+          required
         />
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" />
+        <input type="password" name="password" id="password" required />
         <button type="submit" class="btn">Log In</button>
       </form>
     </section>
