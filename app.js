@@ -6,6 +6,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import homePageRouter from "./routes/homePage.js";
 import userRouter from "./routes/users.js";
+import authRouter from "./routes/auth.js";
 import { initializeLocalStrategy } from "./config/passport.js";
 
 dotenv.config();
@@ -23,11 +24,17 @@ app.use(passport.session());
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
+
 app.set("views", path.join(__dirname, "./views"));
 app.set("view engine", "ejs");
 
 app.use("/", homePageRouter);
 app.use("/users", userRouter);
+app.use("/auth", authRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, (err) => {
