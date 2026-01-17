@@ -23,7 +23,12 @@
     </section>
     <div class="post-list">
       <% posts.forEach((post)=> { %>
-      <div class="post-card"></div>
+      <div class="post-card">
+        <h2>Title: <%= post.title %></h2>
+        <p>Content: <%= post.content %></p>
+        <p>Author: <%= post.author %></p>
+        <p>Date: <%= post.created_at.toDateString() %></p>
+      </div>
       <% }) %>
     </div>
   </body>

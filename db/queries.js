@@ -28,9 +28,17 @@ export const updateMembershipStatus = async (status, userId) => {
   return rows[0];
 };
 
+export const insertPost = async (title, content, userId) => {
+  const { rows } = await pool.query(
+    "INSERT INTO posts (title, content, user_id) VALUES ($1, $2, $3) RETURNING *",
+    [title, content, userId],
+  );
+  return rows[0];
+};
+
 export const getAllPosts = async () => {
   const { rows } = await pool.query(
-    "SELECT id, title, content, user_id, created_at, updated_at FROM posts ORDER BY created_at ASC",
+    "SELECT posts.id, posts.title, posts.content, posts.created_at, posts.updated_at, users.username as author FROM posts JOIN users ON posts.user_id = users.id ORDER BY posts.created_at ASC",
   );
   return rows;
 };
