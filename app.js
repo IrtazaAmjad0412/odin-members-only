@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 import homePageRouter from "./routes/homePage.js";
 import userRouter from "./routes/users.js";
 import authRouter from "./routes/auth.js";
+import memberRouter from "./routes/member.js";
 import { initializeLocalStrategy } from "./config/passport.js";
 
 dotenv.config();
@@ -16,8 +17,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(
-  session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false })
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  }),
 );
+
 initializeLocalStrategy();
 app.use(passport.initialize());
 app.use(passport.session());
@@ -35,6 +41,7 @@ app.set("view engine", "ejs");
 app.use("/", homePageRouter);
 app.use("/users", userRouter);
 app.use("/auth", authRouter);
+app.use("/member", memberRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, (err) => {
