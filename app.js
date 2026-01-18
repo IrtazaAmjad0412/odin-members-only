@@ -9,6 +9,7 @@ import userRouter from "./routes/users.js";
 import authRouter from "./routes/auth.js";
 import memberRouter from "./routes/member.js";
 import postRouter from "./routes/posts.js";
+import adminRouter from "./routes/admin.js";
 import { initializeLocalStrategy } from "./config/passport.js";
 
 dotenv.config();
@@ -22,7 +23,7 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-  }),
+  })
 );
 
 initializeLocalStrategy();
@@ -44,6 +45,7 @@ app.use("/users", userRouter);
 app.use("/auth", authRouter);
 app.use("/member", memberRouter);
 app.use("/posts", postRouter);
+app.use("/admin", adminRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, (err) => {

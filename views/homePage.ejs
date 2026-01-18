@@ -20,6 +20,9 @@
       <a href="/posts/new" class="btn">New Post</a>
       <% if (user.membership_status === "basic") { %>
       <a href="/member/join" class="btn">Join the Club</a>
+      <a href="/admin/join" class="btn">Become Admin</a>
+      <% } %> <% if (user.membership_status === "member") { %>
+      <a href="/admin/join" class="btn">Become Admin</a>
       <% } %> <% } %>
     </div>
     <div class="post-list">

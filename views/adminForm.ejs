@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= appTitle %></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <%- include("header.ejs") %>
+    <section class="form-section">
+      <h2 class="page-title"><%= pageTitle %></h2>
+      <% if (errors && errors.length > 0) { %>
+      <ul class="form-errors">
+        <% errors.forEach((error) => { %>
+        <li><%= error.msg %></li>
+        <% }) %>
+      </ul>
+      <% } %>
+      <form action="/admin/join" method="post">
+        <label for="passcode">Passcode</label>
+        <input type="password" name="passcode" id="passcode" required />
+        <button type="submit" class="btn">Become Admin</button>
+      </form>
+    </section>
+  </body>
+</html>
