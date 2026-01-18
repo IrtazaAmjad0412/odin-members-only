@@ -32,8 +32,12 @@
         </div>
         <hr class="divider" />
         <div class="post-card-footer">
+          <% if (user && user.membership_status === "member") { %>
           <p><%= post.author %></p>
           <p><%= post.created_at.toDateString() %></p>
+          <% } else { %>
+          <p>Author/Date visible to members only.</p>
+          <% } %>
         </div>
       </div>
       <% }) %>
