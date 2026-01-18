@@ -115,6 +115,7 @@ textarea:focus {
   border: none;
   background-color: var(--color-tertiary);
   color: var(--color-primary);
+  cursor: pointer;
 }
 
 .btn:hover {
@@ -144,9 +145,18 @@ textarea:focus {
   background-color: var(--color-primary);
   color: var(--color-secondary);
 }
+.post-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-card-header button:hover {
+  background-color: var(--color-error);
+}
 
 .post-card-content {
-  min-height: 6rem;
+  min-height: 6.5rem;
   line-height: 1.5;
 }
 

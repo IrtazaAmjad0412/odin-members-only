@@ -28,18 +28,26 @@
     <div class="post-list">
       <% posts.forEach((post)=> { %>
       <div class="post-card">
-        <h2><%= post.title %></h2>
+        <div class="post-card-header">
+          <h2><%= post.title %></h2>
+          <% if (user && user.membership_status === "admin") { %>
+          <form action="/posts/<%= post.id %>/delete" method="post">
+            <button type="submit" class="btn">X</button>
+          </form>
+          <% } %>
+        </div>
         <hr class="divider" />
         <div class="post-card-content">
           <p><%= post.content %></p>
         </div>
         <hr class="divider" />
         <div class="post-card-footer">
-          <% if (user && user.membership_status === "member") { %>
+          <% if (user && (user.membership_status === "member" || user.membership_status
+          === "admin")) { %>
           <p><%= post.author %></p>
-          <p><%= post.created_at.toDateString() %></p>
+          <p><%= post.created_at ? post.created_at.toDateString() : "" %></p>
           <% } else { %>
-          <p>Author/Date visible to members only.</p>
+          <p>Author/Date visible to members/admins only.</p>
           <% } %>
         </div>
       </div>

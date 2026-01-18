@@ -3,8 +3,10 @@ import { getAllPosts } from "../db/queries.js";
 export const getAllPostsAndRenderHomePage = async (req, res) => {
   try {
     const posts = await getAllPosts();
-    const isMember = req.user && req.user.membership_status === "member";
-    const postsToRender = isMember
+    const isMemberOrAdmin =
+      req.user &&
+      (req.user.membership_status === "member" || req.user.membership_status === "admin");
+    const postsToRender = isMemberOrAdmin
       ? posts
       : posts.map((post) => ({
           ...post,
