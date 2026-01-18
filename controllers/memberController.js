@@ -18,7 +18,7 @@ export const renderMemberForm = (req, res) => {
   }
 };
 
-export const upgradeUserMembership = async (req, res) => {
+export const upgradeUserMembershipToMember = async (req, res) => {
   try {
     const { passcode } = req.body;
     const errors = validationResult(req);
