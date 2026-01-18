@@ -33,7 +33,7 @@ export const upgradeUserMembership = async (req, res) => {
     if (!req.user || req.user.membership_status !== "basic") {
       return res.redirect("/");
     }
-    if (passcode !== process.env.SECRET_PASSCODE) {
+    if (passcode !== process.env.MEMBER_SECRET_PASSCODE) {
       return res.status(400).render("memberForm", {
         appTitle: "Odin Clubhouse",
         pageTitle: "Member Form",
