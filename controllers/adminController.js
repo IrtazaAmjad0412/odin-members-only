@@ -55,3 +55,10 @@ export const upgradeUserMembershipToAdmin = async (req, res) => {
     res.status(500).send("Server Error");
   }
 };
+
+export const adminOnly = (req, res, next) => {
+  if (req.user && req.user.membership_status === "admin") {
+    return next();
+  }
+  return res.status(403).send("Admins Only");
+};

@@ -1,5 +1,5 @@
 import { validationResult } from "express-validator";
-import { insertPost } from "../db/queries.js";
+import { insertPost, deletePostById } from "../db/queries.js";
 
 export const renderPostForm = (req, res) => {
   try {
@@ -10,7 +10,7 @@ export const renderPostForm = (req, res) => {
       oldInput: [],
     });
   } catch (err) {
-    console.error;
+    console.error(err);
     res.status(500).send("Server Error");
   }
 };
@@ -28,6 +28,17 @@ export const createPost = async (req, res) => {
       });
     }
     await insertPost(title, content, req.user.id);
+    res.redirect("/");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+};
+
+export const deletePost = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await deletePostById(id);
     res.redirect("/");
   } catch (err) {
     console.error(err);

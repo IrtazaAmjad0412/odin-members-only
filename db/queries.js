@@ -42,3 +42,8 @@ export const getAllPosts = async () => {
   );
   return rows;
 };
+
+export const deletePostById = async (id) => {
+  const { rows } = await pool.query("DELETE FROM posts WHERE id = $1 RETURNING *", [id]);
+  return rows[0];
+};
