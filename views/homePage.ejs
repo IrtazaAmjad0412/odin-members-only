@@ -11,23 +11,29 @@
     <section class="page-header">
       <% if (user) { %>
       <h2 class="welcome-message">Welcome, <%= user.first_name %></h2>
-      <div class="actions">
-        <a href="/posts/new" class="btn">New Post</a>
-        <% if (user.membership_status === "basic") { %>
-          <a href="/member/join" class="btn">Join the Club</a>
-        <% } %>
-      </div>
-      <% } else { %>
-      <h2 class="welcome-message">Welcome, Guest</h2>
-      <% } %>
     </section>
+    <div class="actions">
+      <a href="/posts/new" class="btn">New Post</a>
+      <% if (user.membership_status === "basic") { %>
+        <a href="/member/join" class="btn">Join the Club</a>
+      <% } %>
+    </div>
+    <% } else { %>
+    <h2 class="welcome-message">Welcome, Guest</h2>
+    <% } %>
     <div class="post-list">
       <% posts.forEach((post)=> { %>
       <div class="post-card">
-        <h2>Title: <%= post.title %></h2>
-        <p>Content: <%= post.content %></p>
-        <p>Author: <%= post.author %></p>
-        <p>Date: <%= post.created_at.toDateString() %></p>
+        <h2><%= post.title %></h2>
+        <hr class="divider">
+        <div class="post-card-content">
+          <p><%= post.content %></p>
+        </div>
+        <hr class="divider">
+        <div class="post-card-footer">
+          <p><%= post.author %></p>
+          <p><%= post.created_at.toDateString() %></p>
+        </div>
       </div>
       <% }) %>
     </div>
